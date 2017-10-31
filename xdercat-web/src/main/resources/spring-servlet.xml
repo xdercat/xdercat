@@ -63,7 +63,7 @@
     <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager"/>
 
     <!-- 静态资源-->
-    <mvc:resources mapping="/static/**" location="/static/"/>
+    <mvc:resources mapping="/static/**" location="/WEB-INF/static/"/>
 
     <!-- 定义环境变量文件 -->
     <bean id="propertyHolder" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
