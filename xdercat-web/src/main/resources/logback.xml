@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="true" scanPeriod="60 seconds">
+    <property resource="disconf-managed-config.properties" />
+
+    <!-- 输出到控制台中 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%-16t] %-5p %-22c{0} - %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 输出到日志文件  -->
+     <appender name="DEFAULT-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${loggingRoot}/common-default.log</File>
+        <encoder>
+            <pattern>%X{SESSION_KEY} %d{yyyy-MM-dd HH:mm:ss.SSS} [%-16t] %-5p %-22c{0} - %m%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${loggingRoot}/common-default.log.%d{yyyyMMdd}</fileNamePattern>
+            <maxHistory>5</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!-- [公共Appender] 汇总错误 -->
+    <appender name="ERROR-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${loggingRoot}/common-error.log</File>
+        <encoder>
+            <pattern>%X{SESSION_KEY} %d{yyyy-MM-dd HH:mm:ss.SSS} [%-16t] %-5p %-22c{0} - %m%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${loggingRoot}/common-error.log.%d{yyyyMMdd}</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!-- [公共Appender] Velocity -->
+    <appender name="VELOCITY-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${loggingRoot}/common-velocity.log</File>
+        <encoder>
+            <pattern>%X{SESSION_KEY} %d{yyyy-MM-dd HH:mm:ss.SSS} [%-16t] %-5p %-22c{0} - %m%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${loggingRoot}/common-velocity.log.%d{yyyyMMdd}</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+
+    <!-- [公共Appender] tbschedule -->
+    <appender name="TBSCHEDULE-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${loggingRoot}/tbschedule.log</File>
+        <encoder>
+            <pattern>%X{SESSION_KEY} %d{yyyy-MM-dd HH:mm:ss.SSS} [%-16t] %-5p %-22c{0} - %m%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${loggingRoot}/tbschedule.log.%d{yyyyMMdd}</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!-- [公共Appender] 性能日志层 -->
+    <appender name="PERF-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${loggingRoot}/common-perf.log</File>
+        <encoder>
+            <pattern>%X{SESSION_KEY} %d{yyyy-MM-dd HH:mm:ss.SSS} [%-16t] %-5p %-22c{0} - %m%n</pattern>
+
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${loggingRoot}/common-perf.log.%d{yyyyMMdd}</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!-- [公共Appender] 数据访问层 -->
+    <appender name="DAL-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${loggingRoot}/app-dal.log</File>
+        <encoder>
+            <pattern>%X{SESSION_KEY} %d{yyyy-MM-dd HH:mm:ss.SSS} [%-16t] %-5p %-22c{0} - %m%n</pattern>
+
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${loggingRoot}/ylibo-dal.log.%d{yyyyMMdd}</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!-- [公共Appender] SQL语句日志 -->
+    <appender name="SQL-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${loggingRoot}/mybatis-debug.log</File>
+        <encoder>
+            <pattern>%X{SESSION_KEY} %d{yyyy-MM-dd HH:mm:ss.SSS} [%-16t] %-5p %-22c{0} - %m%n</pattern>
+
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${loggingRoot}/mybatis-debug.log.%d{yyyyMMdd}</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+
+
+    <!-- [应用Appender] biz层详细日志 -->
+    <appender name="BIZ-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${loggingRoot}/app-biz.log</File>
+        <encoder>
+            <pattern>%X{SESSION_KEY} %d{yyyy-MM-dd HH:mm:ss.SSS} [%-16t] %-5p %-22c{0} - %m%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${loggingRoot}/ylibo-biz.log.%d{yyyyMMdd}</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="INTERFACE-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${loggingRoot}/app-interface.log</File>
+        <encoder>
+            <pattern>%X{SESSION_KEY} %d{yyyy-MM-dd HH:mm:ss.SSS} [%-16t] %-5p %-22c{0} - %m%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${loggingRoot}/ylibo-interface.log.%d{yyyyMMdd}</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="CONTROLLER-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${loggingRoot}/app-controller.log</File>
+        <encoder>
+            <pattern>%X{SESSION_KEY} %d{yyyy-MM-dd HH:mm:ss.SSS} [%-16t] %-5p %-22c{0} - %m%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${loggingRoot}/ylibo-controller.log.%d{yyyyMMdd}</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="WRAPPER-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${loggingRoot}/app-wrapper.log</File>
+        <encoder>
+            <pattern>%X{SESSION_KEY} %d{yyyy-MM-dd HH:mm:ss.SSS} [%-16t] %-5p %-22c{0} - %m%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${loggingRoot}/ylibo-wrapper.log.%d{yyyyMMdd}</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="MQLISTENER-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${loggingRoot}/app-mq-listener.log</File>
+        <encoder>
+            <pattern>%X{SESSION_KEY} %d{yyyy-MM-dd HH:mm:ss.SSS} [%-16t] %-5p %-22c{0} - %m%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${loggingRoot}/ylibo-mq-listener.log.%d{yyyyMMdd}</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="SPYMEMCACHE-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${loggingRoot}/app-spymemcache.log</File>
+        <encoder>
+            <pattern>%X{SESSION_KEY} %d{yyyy-MM-dd HH:mm:ss.SSS} [%-16t] %-5p %-22c{0} - %m%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${loggingRoot}/ylibo-spymemcache.log.%d{yyyyMMdd}</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="DUBBOX-REST-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${loggingRoot}/dubbox-rest.log</File>
+        <encoder>
+            <pattern>%X{SESSION_KEY} %d{yyyy-MM-dd HH:mm:ss.SSS} [%-16t] %-5p %-22c{0} - %m%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${loggingRoot}/dubbox-rest.log.%d{yyyyMMdd}</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!-- [框架Logger] Jakarta commons - 默认 -->
+    <logger name="org.apache" additivity="false">
+        <appender-ref ref="DEFAULT-APPENDER"/>
+    </logger>
+
+    <!-- [框架Logger] springframework - 默认 -->
+    <logger name="org.springframework" additivity="false">
+        <appender-ref ref="DEFAULT-APPENDER"/>
+    </logger>
+    <!-- [框架Logger] msp- 默认 -->
+
+    <!-- [框架Logger] 数据访问层 - Ibatis -->
+    <logger name="org.mybatis" additivity="false">
+        <appender-ref ref="DAL-APPENDER"/>
+    </logger>
+
+    <!-- [框架Logger] 数据访问层 - tbschedule -->
+    <logger name="com.taobao.pamirs.schedule" additivity="false">
+        <appender-ref ref="TBSCHEDULE-APPENDER"/>
+    </logger>
+
+    <!-- [框架Logger] 数据访问层 - SQL -->
+    <logger name="java.sql" additivity="false">
+        <appender-ref ref="DAL-APPENDER"/>
+    </logger>
+
+    <!-- Mybatis and SQL -->
+    <logger name="org.apache.ibatis" additivity="false">
+        <appender-ref ref="SQL-APPENDER"/>
+    </logger>
+
+    <logger name="dao" additivity="false">
+        <appender-ref ref="SQL-APPENDER"/>
+    </logger>
+
+    <logger name="org.mybatis.spring" additivity="false">
+        <appender-ref ref="DAL-APPENDER"/>
+    </logger>
+    <!-- ============================================================== -->
+    <!-- 业务 logger -->
+    <!-- ============================================================== -->
+
+    <!-- [应用Logger] 业务层日志 -->
+
+    <!-- [应用Logger] 业务层日志 -->
+    <logger name="com.xdercat.service" additivity="false">
+        <appender-ref ref="BIZ-APPENDER"/>
+    </logger>
+
+    <!-- [应用Logger] 控制层日志 -->
+    <logger name="com.xdercat.web.controller" additivity="false">
+        <appender-ref ref="CONTROLLER-APPENDER"/>
+    </logger>
+
+    <!-- ============================================================== -->
+    <!-- Root logger -->
+    <!-- ============================================================== -->
+
+    <root level="${loggingLevel}">
+        <appender-ref ref="DEFAULT-APPENDER"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>

@@ -6,6 +6,8 @@ import com.xdercat.domain.ExampleExample;
 import com.xdercat.domain.defined.TestDO;
 import com.xdercat.service.IndexService;
 import org.apache.commons.collections.CollectionUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,8 @@ import java.util.List;
  */
 @Service("indexService")
 public class IndexServiceImpl implements IndexService {
+
+    private static final Logger log = LoggerFactory.getLogger(IndexServiceImpl.class);
 
     @Autowired
     private ExampleMapper exampleMapper;
@@ -32,6 +36,7 @@ public class IndexServiceImpl implements IndexService {
         exampleExample.createCriteria().andIdEqualTo(1);
         List<Example> exampleList = exampleMapper.selectByExample(exampleExample);
         if (CollectionUtils.isNotEmpty(exampleList)) {
+            log.info("exampleList is not empty");
             Example example = exampleList.get(0);
             testDO.setId(example.getId());
             return testDO;
