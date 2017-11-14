@@ -9,9 +9,11 @@
 
     <!-- 设置使用注解的类所在的jar包 -->
     <context:component-scan base-package="com.xdercat">
-        <!--<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
-    <import resource="disconf.xml"/>
+    <context:property-placeholder location="classpath:database.properties"/>
+    <context:property-placeholder location="classpath:disconf-managed-config.properties"/>
+    <!--<import resource="disconf.xml"/>-->
     <import resource="datasource.xml" />
 </beans>

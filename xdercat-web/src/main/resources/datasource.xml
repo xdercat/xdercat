@@ -6,7 +6,7 @@
      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 
-	<bean id="applicationDataSource" class="com.alibaba.druid.pool.DruidDataSource"
+	<bean id="xdercatDataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">
 		<!-- 基本属性 URL、user、password -->
 		<property name="driverClassName" value="${jdbc.driverClassName}" />
@@ -43,8 +43,8 @@
 	</bean>
 
 	<!-- define the SqlSessionFactory -->
-	<bean id="applicationSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="applicationDataSource" />
+	<bean id="xdercatSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="xdercatDataSource" />
 		<property name="configLocation" value="classpath:mybatis-config.xml" />
 		<property name="mapperLocations" value="classpath:persistence/**/*.xml"/>
 	</bean>
@@ -54,14 +54,14 @@
 		<property name="annotationClass" value="org.springframework.stereotype.Repository" />
 		<property name="basePackage"
 			value="com.xdercat.dal.generated,com.xdercat.dal.defined" />
-		<property name="sqlSessionFactoryBeanName" value="applicationSqlSessionFactory" />
+		<property name="sqlSessionFactoryBeanName" value="xdercatSqlSessionFactory" />
 	</bean>
 
-	<bean id="applicationManager"
+	<bean id="xdercatManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="applicationDataSource" />
+		<property name="dataSource" ref="xdercatDataSource" />
 		<qualifier value="tx" />
 	</bean>
 
-    <tx:annotation-driven transaction-manager="applicationManager"/>
+    <tx:annotation-driven transaction-manager="xdercatManager"/>
 </beans>
