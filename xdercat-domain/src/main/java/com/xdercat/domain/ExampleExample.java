@@ -1,5 +1,7 @@
 package com.xdercat.domain;
 
+import com.xdercat.domain.plugins.Page;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

@@ -16,6 +16,11 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.xdercat</groupId>
+			<artifactId>xdercat-dao</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.xdercat</groupId>
 			<artifactId>xdercat-domain</artifactId>
 			<version>1.0.0</version>
 		</dependency>
@@ -23,6 +28,10 @@
 			<groupId>com.xdercat</groupId>
 			<artifactId>xdercat-biz</artifactId>
 			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.baidu.disconf</groupId>
+			<artifactId>disconf-client</artifactId>
 		</dependency>
 	</dependencies>
 

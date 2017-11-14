@@ -1,8 +1,11 @@
 package com.xdercat.dal.generated;
 
+import com.xdercat.dal.anno.Insert;
+import com.xdercat.dal.anno.Update;
 import com.xdercat.domain.Example;
 import com.xdercat.domain.ExampleExample;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

@@ -12,5 +12,6 @@
         <!--<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
     </context:component-scan>
 
+    <import resource="disconf.xml"/>
     <import resource="datasource.xml" />
 </beans>
