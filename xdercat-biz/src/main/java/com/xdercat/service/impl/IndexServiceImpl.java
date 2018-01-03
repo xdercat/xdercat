@@ -26,7 +26,7 @@ public class IndexServiceImpl implements IndexService {
 
     @Override
     public String hello() {
-        return "hello man";
+        return "hello man!";
     }
 
     @Override
